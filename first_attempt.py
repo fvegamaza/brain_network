@@ -78,3 +78,18 @@ df4.loc[df4["valor"] == 9, "valor2"] = "9 y 10"
 df4.loc[df4["valor"] == 10, "valor2"] = "9 y 10"
 
 df4.to_csv("Q52.csv", sep= ",", header=True)
+
+#Q51 #Satisfacción
+
+df5 = df[df["variable"].str.contains("Q51")].copy(deep= True)
+df5.isna().sum() #4454 na
+df5 = df5.dropna()
+df5.drop((df5[df5["valor"] == 'NS/NC'].index),inplace=True)
+df5["valor"].value_counts() #402 string vacios - verificaria si no hay un error en el procesamiento
+
+df5_df4_outer = pd.merge(df4, df5, on='responseID', how='outer')
+del df5_df4_outer["valor2"],df5_df4_outer["variable_y"]
+df5_df4_outer = df5_df4_outer.dropna()
+df5_df4_outer["valor_y"] = df5_df4_outer["valor_y"].astype(int)
+df5_df4_outer["avg_xy"] = (df5_df4_outer["valor_x"] + df5_df4_outer["valor_y"]) // 2
+df5_df4_outer.to_csv("Q51.csv", sep= ",", header=True)
