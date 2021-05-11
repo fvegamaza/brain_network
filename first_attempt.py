@@ -27,7 +27,11 @@ df = df.rename(columns={'value':'valor'})
 df = df.set_index("responseID")
 df.to_csv("BRN 2020.csv",sep=",", header=True) #Aquí la actividad 1 es copletada
 
-
+#
+df[df["variable"] == "Q18"].value_counts()
+df.iloc[0]["valor"]
+df["valor"] = df["valor"].replace('Persona FÃ\xadsica', "Persona fisica") #Reemplazo error de codificacion
+df = pd.DataFrame(df)
 #Q24 Antiguedad
 df1 = df[df["variable"] == "Q24"] #Para obtener la antiguedad con sus respectivos ids
 df1.to_csv("antiguedad.csv",sep=",", header=True)
