@@ -1,8 +1,15 @@
 # Hola! Mi intención en este script es comentar como fui haciendo las tablas para luego obtener los graficos en tableau.
+#Cualquier feedback es bienvenido :D
 
 
+#En cuanto a la automatizacion, utilicé tableau public conectado a google docs. Respetando el nombre de las variables y
+#de las hojas no tuve problema en agregar o quitar hojas y/o tablas. Basicamente guardé los .csv exportados aqui y luego los subi a mi drive
+# Sé que existe una api para cierta version de tableau como asi tambien
+# es posible conectar tableau public a google docs y manejarlo con python a traves de la api de google.
+# No utilicé estas opciones porque entiendo que no son gratuitas.
 
 
+#Libreria necesaria
 import pandas as pd
 #Lectura de datos
 path = "C:/Users/fvegamaza/PycharmProjects/challenger_brain_network"
